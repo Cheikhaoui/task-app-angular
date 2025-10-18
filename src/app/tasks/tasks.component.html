@@ -1,0 +1,19 @@
+@if(newTask){
+    <app-new-task (cancel)="cancel()" (create)="create($event)"></app-new-task>
+}
+<section id="tasks">
+    <header>
+        <h1>{{user.name}}'s Tasks</h1>
+        <menu>
+            <button (click)="addTask()">Add task</button>
+        </menu>
+    </header>
+<ul>
+    @for (task of  tasks; track $index) {
+       <li>
+        <app-task [task]="task" (complete)="deleteTask($event)"></app-task>
+       </li>
+    }
+</ul>
+</section>
+
